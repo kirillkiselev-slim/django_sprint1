@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Лента записей
+{% endblock %}
+{% block content %}
+<h1>Лента записей</h1>
+  <hr>
+  {% for blog in blogs reversed %}
+  <article>
+    <ul>
+      <li>
+        {{ blog.location }}
+      </li>
+      <li>
+        {{ blog.date }}
+      </li>
+      <li>
+        Категория: <a href="{% url 'blog:category_posts' blog.category %}">{{ blog.category }}</a>
+      </li>
+    </ul>
+      <!-- Первые 10 слов -->
+    <p>
+      {{ blog.text|truncatewords:10 }}
+    </p>
+    <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
+  </article>
+  {% if not forloop.last %}
+    <hr>
+  {% endif %}
+  {% endfor %}
+{% endblock %}
