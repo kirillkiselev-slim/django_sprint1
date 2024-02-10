@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 posts = [
     {
         'id': 0,
@@ -45,18 +46,21 @@ posts = [
 
 
 def index(request):
+    """Функция рендерит страницу 'Лента записей'."""
     context = {'blogs': posts}
     template = 'blog/index.html'
     return render(request, template, context)
 
 
 def post_detail(request, pk):
+    """Функция рендерит определенный пост после перехода по линку."""
     context = {'post': posts[pk]}
     template = 'blog/detail.html'
     return render(request, template, context)
 
 
 def category_posts(request, category):
+    """Функция рендерит страницу с названием категории."""
     context = {'category': category}
     template = 'blog/category.html'
     return render(request, template, context)
