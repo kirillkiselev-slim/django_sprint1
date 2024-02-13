@@ -1,10 +1,9 @@
 {% extends "base.html" %}
-{% include "blog/includes/post.html" with truncating_text=True %}
 
 {% block title %}
   {{ post.location }} {{ post.date }}
 {% endblock %}
 
 {% block content %}
-  {% include "blog/includes/post.html" %}
+  {% include "posts/includes/post.html" with truncating_text=True %}
 {% endblock %}
